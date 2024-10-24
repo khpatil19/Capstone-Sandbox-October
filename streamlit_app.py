@@ -37,6 +37,7 @@ with st.form("form1", clear_on_submit= False):
         'Ad Name',
         ('Spring Safety Ad'))
 
+    submit = st.form_submit_button("Get predicted number of conversions")
 
     # Loading the model trained
     # @st.cache(allow_output_mutation=True)
@@ -48,14 +49,14 @@ with st.form("form1", clear_on_submit= False):
 
     rf_pipeline = load('khpatil19/Capstone-Sandbox-October/random_forest_regressor.joblib')
 
-    # Getting some sample input
+    # Constructing the dictionary with the collected inputs
     sample_input = {
-        'Search keyword': ['hazardous materials management'], 
-        'Campaign': ['Branded'],  
-        'Ad group': ['Hazard Placards'],  
-        'Keyword max CPC': [4],  
-        'Ad type': ['Responsive search ad'], 
-        'Ad name': ['Spring Safety Ad']  
+        'Search keyword': [search_keyword_input], 
+        'Campaign': [campaign_input],  
+        'Ad group': [ad_group_input],  
+        'Keyword max CPC': [keyword_max_cpc_input],  
+        'Ad type': [ad_type_input], 
+        'Ad name': [ad_name_input]
     }
 
     input_data = pd.DataFrame(sample_input)
