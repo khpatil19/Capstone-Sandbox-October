@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
-# import joblib
-# from joblib import load
+import joblib
+from joblib import load
 
 st.set_page_config(
     page_title="Capstone-demo",
@@ -39,14 +39,14 @@ with st.form("form1", clear_on_submit= False):
 
 
     # Loading the model trained
-    @st.cache(allow_output_mutation=True)
-    import joblib
-    def load_model():
-        return joblib.load('khpatil19/Capstone-Sandbox-October/random_forest_regressor.joblib')
+    # @st.cache(allow_output_mutation=True)
+    # import joblib
+    # def load_model():
+    #     return joblib.load('khpatil19/Capstone-Sandbox-October/random_forest_regressor.joblib')
 
-    rf_pipeline = load_model()
+    # rf_pipeline = load_model()
 
-    # rf_pipeline = load('khpatil19/Capstone-Sandbox-October/random_forest_regressor.joblib')
+    rf_pipeline = load('khpatil19/Capstone-Sandbox-October/random_forest_regressor.joblib')
 
     # Getting some sample input
     sample_input = {
