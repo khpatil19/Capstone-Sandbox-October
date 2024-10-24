@@ -1,5 +1,5 @@
 import pandas as pd
-from joblib import load
+# from joblib import load
 import streamlit as st
 
 st.set_page_config(
