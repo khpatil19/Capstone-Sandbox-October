@@ -1,18 +1,19 @@
 import pandas as pd
-# from joblib import load
 import streamlit as st
+
+from joblib import load
 
 st.set_page_config(
     page_title="Capstone-demo",
     page_icon="🏗️",
 )
 
-st.title("Capstone model demonstration")
+st.title("🏗️ Capstone model demonstration")
 st.subheader("Prototype of the project MVP")
 
 with st.form("form1", clear_on_submit= False): 
 
-    st.subheader("Enter the follwing details of your Google Ad")
+    st.subheader("Enter the following details of your Google Ad")
 
     search_keyword_input = st.selectbox(
         'Search keyword',
