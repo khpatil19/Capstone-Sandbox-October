@@ -47,7 +47,7 @@ with st.form("form1", clear_on_submit= False):
 
     # rf_pipeline = load_model()
 
-    rf_pipeline = load('./khpatil19/Capstone-Sandbox-October/random_forest_regressor.joblib')
+    rf_pipeline = load("/khpatil19/Capstone-Sandbox-October/random_forest_regressor.joblib")
 
     # Constructing the dictionary with the collected inputs
     sample_input = {
