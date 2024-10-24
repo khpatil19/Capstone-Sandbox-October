@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-
+!pip install joblib
 from joblib import load
 
 st.set_page_config(
