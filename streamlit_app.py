@@ -12,6 +12,8 @@ st.subheader("Prototype of the project MVP")
 
 with st.form("form1", clear_on_submit= False): 
 
+    st.subheader("Enter the follwing details of your Google Ad")
+
     search_keyword_input = st.selectbox(
         'Search keyword',
         ('Labelmaster'))
