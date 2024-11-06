@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 import joblib
 from joblib import load
+import pickle
 
 st.set_page_config(
     page_title="Capstone-demo",
@@ -10,6 +11,9 @@ st.set_page_config(
 
 st.title("🏗️ Capstone model demonstration")
 st.subheader("Prototype of the project MVP")
+
+rf_pipeline = load("random_forest_regressor_2.joblib")
+predicted_values = rf_pipeline.predict(input_data)
 
 with st.form("form1", clear_on_submit= False): 
 
@@ -47,7 +51,7 @@ with st.form("form1", clear_on_submit= False):
 
     # rf_pipeline = load_model()
 
-    rf_pipeline = load("random_forest_regressor_2.joblib")
+   
 
     # Constructing the dictionary with the collected inputs
     sample_input = {
@@ -62,9 +66,6 @@ with st.form("form1", clear_on_submit= False):
     # Convert the dictionary to a DataFrame
     input_data = pd.DataFrame(sample_input)
 
-    # Assuming rf_pipeline is the loaded model pipeline that includes preprocessing and regression model
-    # Use the trained pipeline to make a prediction
-    predicted_values = rf_pipeline.predict(input_data)
 
     # Output the predicted number of conversions, clicks, and impressions
     # print(f"Predicted Conversions: {predicted_values[0][0]:.2f}")
