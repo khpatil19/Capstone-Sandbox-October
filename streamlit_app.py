@@ -12,7 +12,7 @@ st.set_page_config(
 st.title("🏗️ Capstone model demonstration")
 st.subheader("Prototype of the project MVP")
 
-model_path = "random_forest_regressor_2.joblib"
+model_path = "./random_forest_regressor_2.joblib"
 rf_pipeline = load(model_path)
 
 with st.form("form1", clear_on_submit= False): 
