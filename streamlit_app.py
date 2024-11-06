@@ -47,7 +47,7 @@ with st.form("form1", clear_on_submit= False):
 
     # rf_pipeline = load_model()
 
-    rf_pipeline = load("/khpatil19/Capstone-Sandbox-October/random_forest_regressor.joblib")
+    rf_pipeline = load("/khpatil19/Capstone-Sandbox-October/random_forest_regressor_2.joblib")
 
     # Constructing the dictionary with the collected inputs
     sample_input = {
@@ -59,16 +59,22 @@ with st.form("form1", clear_on_submit= False):
         'Ad name': [ad_name_input]
     }
 
+    # Convert the dictionary to a DataFrame
     input_data = pd.DataFrame(sample_input)
 
+    # Assuming rf_pipeline is the loaded model pipeline that includes preprocessing and regression model
     # Use the trained pipeline to make a prediction
-    predicted_conversions = rf_pipeline.predict(input_data)
+    predicted_values = rf_pipeline.predict(input_data)
 
-    # # Output the predicted number of conversions
-    # print(f"Predicted Conversions: {predicted_conversions[0]}")
+    # Output the predicted number of conversions, clicks, and impressions
+    # print(f"Predicted Conversions: {predicted_values[0][0]:.2f}")
+    # print(f"Predicted Clicks: {predicted_values[0][1]:.2f}")
+    # print(f"Predicted Impressions: {predicted_values[0][2]:.2f}")
 
 
 
     st.write(
-        "Predicted Conversions: {predicted_conversions[0]}"
+        "Predicted Conversions: {predicted_values[0][0]:.2f}"
+        "Predicted Clicks: {predicted_values[0][1]:.2f}"
+        "Predicted Impressions: {predicted_values[0][2]:.2f}"
     )
