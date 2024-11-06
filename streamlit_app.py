@@ -37,7 +37,7 @@ with st.form("form1", clear_on_submit= False):
         'Ad Name',
         ('Spring Safety Ad'))
 
-    submit = st.form_submit_button("Get predicted number of conversions")
+    submit = st.form_submit_button("Get predicted performance")
 
     # Loading the model trained
     # @st.cache(allow_output_mutation=True)
