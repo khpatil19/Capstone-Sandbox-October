@@ -13,7 +13,7 @@ st.title("🏗️ Capstone model demonstration")
 st.subheader("Prototype of the project MVP")
 
 rf_pipeline = load("random_forest_regressor_2.joblib")
-predicted_values = rf_pipeline.predict(input_data)
+
 
 with st.form("form1", clear_on_submit= False): 
 
@@ -72,7 +72,7 @@ with st.form("form1", clear_on_submit= False):
     # print(f"Predicted Clicks: {predicted_values[0][1]:.2f}")
     # print(f"Predicted Impressions: {predicted_values[0][2]:.2f}")
 
-
+    predicted_values = rf_pipeline.predict(input_data)
 
     st.write(
         "Predicted Conversions: {predicted_values[0][0]:.2f}"
