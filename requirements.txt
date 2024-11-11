@@ -1,4 +1,4 @@
-pandas,
-streamlit,
-joblib,
+pandas
+streamlit
+joblib
 pickle
