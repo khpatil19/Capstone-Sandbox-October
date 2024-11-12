@@ -61,18 +61,19 @@ with st.form("form1", clear_on_submit=False):
 
         # Display predictions in a pivoted tabular format using HTML
         st.markdown("""
+            <h2>Expected ad performance</h2>
             <table>
                 <tr>
-                    <th><h4>Metric</h4></th>
-                    <th><h4>Conversions</h4></th>
-                    <th><h4>Clicks</h4></th>
-                    <th><h4>Impressions</h4></th>
+                    <th><h5>Metric</h5></th>
+                    <th><h5>Conversions</h5></th>
+                    <th><h5>Clicks</h5></th>
+                    <th><h5>Impressions</h5></th>
                 </tr>
                 <tr>
-                    <td><h4>Value</h4></td>
-                    <td><h4>{:.2f}</h4></td>
-                    <td><h4>{:.2f}</h4></td>
-                    <td><h4>{:.2f}</h4></td>
+                    <td><h5>Value</h5></td>
+                    <td><h5>{:.2f}</h5></td>
+                    <td><h5>{:.2f}</h5></td>
+                    <td><h5>{:.2f}</h5></td>
                 </tr>
             </table>
             """.format(predicted_values[0][0], predicted_values[0][1], predicted_values[0][2]), unsafe_allow_html=True)
