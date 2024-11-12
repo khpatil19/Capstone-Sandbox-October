@@ -10,10 +10,6 @@ st.set_page_config(
 st.title("🏗️ Capstone model demonstration")
 st.subheader("Prototype of the project MVP")
 
-# Load the model from the pickle file
-with open("path/to/your/model/random_forest_regressor_2.pkl", "rb") as file:
-    rf_pipeline = pickle.load(file)
-
 with st.form("form1", clear_on_submit=False):
 
     st.subheader("Enter the following details of your Google Ad")
@@ -42,6 +38,10 @@ with st.form("form1", clear_on_submit=False):
 
     submit = st.form_submit_button("Get predicted performance")
 
+    # Load the model from the pickle file
+    with open("random_forest_regressor_2.pkl", "rb") as file:
+        rf_pipeline = pickle.load(file)
+    
     if submit:
         # Constructing the dictionary with the collected inputs
         sample_input = {
