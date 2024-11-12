@@ -59,25 +59,20 @@ with st.form("form1", clear_on_submit=False):
         # Use the trained pipeline to make a prediction
         predicted_values = rf_pipeline.predict(input_data)
 
-        # Display predictions in a tabular format using HTML
+        # Display predictions in a pivoted tabular format using HTML
         st.markdown("""
             <table>
                 <tr>
-                    <th><h3>Metrics</h3></th>
-                    <th><h3>Values</h3></th>
+                    <th><h4>Metric</h4></th>
+                    <th><h4>Conversions</h4></th>
+                    <th><h4>Clicks</h4></th>
+                    <th><h4>Impressions</h4></th>
                 </tr>
                 <tr>
-                    <td><h3>Conversions</h3></td>
-                    <td><h3>{:.2f}</h3></td>
-                </tr>
-                <tr>
-                    <td><h3>Clicks</h3></td>
-                    <td><h3>{:.2f}</h3></td>
-                </tr>
-                <tr>
-                    <td><h3>Impressions</h3></td>
-                    <td><h3>{:.2f}</h3></td>
+                    <td><h4>Value</h4></td>
+                    <td><h4>{:.2f}</h4></td>
+                    <td><h4>{:.2f}</h4></td>
+                    <td><h4>{:.2f}</h4></td>
                 </tr>
             </table>
             """.format(predicted_values[0][0], predicted_values[0][1], predicted_values[0][2]), unsafe_allow_html=True)
-
