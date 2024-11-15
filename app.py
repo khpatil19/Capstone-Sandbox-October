@@ -7,73 +7,106 @@ st.set_page_config(
     page_icon="🏗️",
 )
 
-st.title("🏗️ Capstone model demonstration")
-st.subheader("Prototype of the project MVP")
+# Sidebar navigation
+page = st.sidebar.selectbox(
+    "Select a Page",
+    ["Ad Performance Prediction", "Additional Insights"]
+)
 
-with st.form("form1", clear_on_submit=False):
+# Apply custom CSS for further branding
+st.markdown("""
+    <style>
+    body {
+        background-color: #f0f2f6;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
-    st.subheader("Enter the following details of your Google Ad")
+if page == "Ad Performance Prediction":
+    st.title("🏗️ Capstone Model Demonstration")
+    st.subheader("Prototype of the project MVP")
 
-    search_keyword_input = st.selectbox(
-        'Search keyword',
-        ('Labelmaster'))
+    with st.form("form1", clear_on_submit=False):
+        st.subheader("Enter the following details of your Google Ad")
 
-    campaign_input = st.selectbox(
-        'Campaign',
-        ('Branded', 'IATA'))
+        search_keyword_input = st.selectbox(
+            'Search keyword',
+            ('Labelmaster',)
+        )
 
-    ad_group_input = st.selectbox(
-        'Ad Group',
-        ('Hazard Placards'))
+        campaign_input = st.selectbox(
+            'Campaign',
+            ('Branded', 'IATA')
+        )
 
-    keyword_max_cpc_input = st.slider('Enter the max CPC', 1, 10, 3)
+        ad_group_input = st.selectbox(
+            'Ad Group',
+            ('Hazard Placards',)
+        )
 
-    ad_type_input = st.selectbox(
-        'Ad type',
-        ('Responsive search ad'))
+        keyword_max_cpc_input = st.slider('Enter the max CPC', 1, 10, 3)
 
-    ad_name_input = st.selectbox(
-        'Ad Name',
-        ('Spring Safety Ad'))
+        ad_type_input = st.selectbox(
+            'Ad type',
+            ('Responsive search ad',)
+        )
 
-    submit = st.form_submit_button("Get predicted performance")
+        ad_name_input = st.selectbox(
+            'Ad Name',
+            ('Spring Safety Ad',)
+        )
 
-    # Load the model from the pickle file
-    with open("random_forest_regressor_2.pkl", "rb") as file:
-        rf_pipeline = pickle.load(file)
+        submit = st.form_submit_button("Get predicted performance")
+
+        # Load the model from the pickle file
+        with open("random_forest_regressor_2.pkl", "rb") as file:
+            rf_pipeline = pickle.load(file)
+
+        if submit:
+            # Constructing the dictionary with the collected inputs
+            sample_input = {
+                'Search keyword': [search_keyword_input],
+                'Campaign': [campaign_input],
+                'Ad group': [ad_group_input],
+                'Keyword max CPC': [keyword_max_cpc_input],
+                'Ad type': [ad_type_input],
+                'Ad name': [ad_name_input]
+            }
+
+            # Convert the dictionary to a DataFrame
+            input_data = pd.DataFrame(sample_input)
+
+            # Use the trained pipeline to make a prediction
+            predicted_values = rf_pipeline.predict(input_data)
+
+            # Display predictions in a pivoted tabular format using HTML
+            st.markdown(f"""
+                <h2 style="color:#FF362A;">Expected Ad Performance</h2>
+                <table style="width:100%; background-color:#FFCA3A; color:#4E5056; text-align:center;">
+                    <tr>
+                        <th>Metric</th>
+                        <th>Conversions</th>
+                        <th>Clicks</th>
+                        <th>Impressions</th>
+                    </tr>
+                    <tr>
+                        <td>Value</td>
+                        <td>{predicted_values[0][0]:.2f}</td>
+                        <td>{predicted_values[0][1]:.2f}</td>
+                        <td>{predicted_values[0][2]:.2f}</td>
+                    </tr>
+                </table>
+            """, unsafe_allow_html=True)
+
+elif page == "Additional Insights":
+    st.title("📊 Additional Insights")
+    st.subheader("Explore insights about campaign data and performance metrics.")
     
-    if submit:
-        # Constructing the dictionary with the collected inputs
-        sample_input = {
-            'Search keyword': [search_keyword_input], 
-            'Campaign': [campaign_input],  
-            'Ad group': [ad_group_input],  
-            'Keyword max CPC': [keyword_max_cpc_input],  
-            'Ad type': [ad_type_input], 
-            'Ad name': [ad_name_input]
-        }
-
-        # Convert the dictionary to a DataFrame
-        input_data = pd.DataFrame(sample_input)
-
-        # Use the trained pipeline to make a prediction
-        predicted_values = rf_pipeline.predict(input_data)
-
-        # Display predictions in a pivoted tabular format using HTML
-        st.markdown("""
-            <h2>Expected ad performance</h2>
-            <table>
-                <tr>
-                    <th><h5>Metric</h5></th>
-                    <th><h5>Conversions</h5></th>
-                    <th><h5>Clicks</h5></th>
-                    <th><h5>Impressions</h5></th>
-                </tr>
-                <tr>
-                    <td><h5>Value</h5></td>
-                    <td><h5>{:.2f}</h5></td>
-                    <td><h5>{:.2f}</h5></td>
-                    <td><h5>{:.2f}</h5></td>
-                </tr>
-            </table>
-            """.format(predicted_values[0][0], predicted_values[0][1], predicted_values[0][2]), unsafe_allow_html=True)
+    st.markdown("""
+    <p style="color:#4E5056;">
+    This section will provide additional insights, trends, or data visualizations to help 
+    users better understand campaign performance and make data-driven decisions.
+    </p>
+    """, unsafe_allow_html=True)
+    # Placeholder for future data or visualizations
+    st.write("Coming soon...")
