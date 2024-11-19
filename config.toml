@@ -2,4 +2,4 @@
 secondaryBackgroundColor="#EE2833"
 
 [server]
-maxUploadSize = 500
+maxUploadSize = 1024
