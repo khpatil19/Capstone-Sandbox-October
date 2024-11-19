@@ -9,18 +9,17 @@ import pickle
 
 st.set_page_config(
     page_title="Labelmaster Ad Tool",
-    page_icon="C:/Users/khpat/Desktop/Desktop Files/LabelMaster/lm-favicon.ico",
+    page_icon="lm-favicon.ico",
 )
 
-# Add a cover image at the top of the app
 st.image(
-    "C:/Users/khpat/Desktop/Desktop Files/LabelMaster/Cover_Image.png",  # Path to your cover image
+    "Cover_Image.png",
     use_column_width=True,
 )
 
 # Add an image to the sidebar
 st.sidebar.image(
-    "C:/Users/khpat/Desktop/Desktop Files/LabelMaster/Red_Logo.png",  # Replace with the path to your image file
+    "Red_Logo.png",
     use_column_width=True
 )
 
